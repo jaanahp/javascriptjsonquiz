@@ -1,0 +1,121 @@
+<!-- Make a single page multiple choice quiz app using JavaScript and JSON.
+Keywords: JSON-reading, loop, AJAX-call, mobile-optimized (bootstrap)
+
+There should be at least 3 different multiple choice questions and they should be stored 
+in a separate JSON file called questions.json.
+
+The main page uses AJAJ (AJAX) call to fetch JSON file from the same web server 
+and uses it to build a web page with a mobile friendly user interface.
+
+After the user presses a button the JavaScript code will first verify if the user has replied all the questions,
+then it will display how many questions the user got correct.
+
+Tip: You need a web server to make this work. In other words trying to load JSON file from local file system is going to fail.
+If you choose to use normal .js file instead, you will not get full points from this assignment. 
+
+You can use either fetch API or jQuery $.getJSON(url) to fetch the JSON data from specified URL.
+jQuery can also be useful to find the radio buttons the user has clicked,
+but you can complete the assignment without using jQuery at all.
+
+Use Bootstrap or similar library to make the web page responsive (mobile friendly).
+Common reasons for lower grade for this assignment are the following: 
+Not using external JSON file to store the questions and their answers. Not checking the answers and counting the points correctly.-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mobile-Optimized Question Form</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+      <script>
+        //haetaan json-tiedosto
+        //käsitellään data listaan tms
+        //tulostetaan listan pituudelta radiobutton elementtejä silmukassa
+        //samantyyppinen esimerkki 19.2. tunnilla taulukko joka tulostettiin silmukassa
+        let quiz = [];
+        var options = [];
+
+        function JSONtoArrays() {
+            //let objArray = [{}]
+            async function getJSONdata(url) {
+              let response = await fetch(url);
+              //tulee varmaan json-stringinä?
+              let jsonData = await response.json();               
+              for (let item of jsonData) {
+                  //let obj = JSON.parse (item)
+                  //console.log(question.question);
+                  //console.log(question.options);
+                  quiz.push(item.question);
+                  options.push(item.options);
+                  //options.push(JSON.parse(jsonData.options));
+                  //console.log(quiz);
+                  //console.log(options);
+              }
+              // console.log(quiz);
+              // console.log(options);
+              // console.log(quiz.length);
+              // console.log(options.length);
+              createQuizTable();
+            }
+          getJSONdata('quiz.json');
+          //objArray = JSON.parse(questions);
+
+        }
+        JSONtoArrays();
+
+        function createQuizTable () {
+            let quizarea = document.getElementById('quiztable');
+            for (let i = 0; i < 5; i++) {
+                //ensin luodaan kysymysten vaatima määrä -tr elementtejä
+                  let tr = document.createElement('tr');
+                  quizarea.appendChild(tr);
+                  let tdQuestion = document.createElement('td');
+                  tdQuestion.innerText = quiz[i];
+                  console.log(quiz[i]);
+                  tr.appendChild(tdQuestion);
+
+                  for (let j = 0; j < 4; j++) {
+                      let tdAnswer = document.createElement('td');
+                      let div = document.createElement('div');
+                      let input = document.createElement('input');
+                      let label = document.createElement('label');
+                      div.className = 'form-check';
+                      input.className = 'form-check-input';
+                      input.type = 'radio';
+                      input.name = "option" + i;
+                      input.value = options[i][j].value;
+                      label.className = 'form-check-label';
+                      //console.log(options[i][j].text);
+                      label.innerText = options[i][j].text;
+                      label.htmlFor = "option";
+                      tr.appendChild(tdAnswer);
+                      tdAnswer.appendChild(div);
+                      tdAnswer.appendChild(input);
+                      tdAnswer.appendChild(label);
+                  }
+            }
+
+        }
+
+    </script>
+</head>
+<style>
+  .question {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  .quiz-set {
+    margin-bottom: 20px;
+  }
+</style>
+<body>
+  <h1>Tietovisa</h1>
+  <form>
+    <table id="quiztable" class="table table-sm">
+    </table>
+    <button class="btn btn-primary" type="submit">Submit</button>
+  </form>
+</body>
+</html>

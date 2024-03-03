@@ -1,0 +1,107 @@
+[
+    {
+        "question": "Kuka oli ensimmäinen ihminen avaruudessa?",
+        "options": [
+            {
+                "text": "Vladimir Komarov (1960)",
+                "value": 0
+            },
+            {
+                "text": "Michael Connelly (1962)",
+                "value": 0
+            },
+            {
+                "text": "Juri Gagarin (1961)",
+                "value": 1
+            },
+            {
+                "text": "Jean-Luc Picard (1955)",
+                "value": 0
+            }
+        ]
+    },
+    {
+        "question": "Kuka oli ensimmäinen ihminen, joka ylitti Atlantin lennolla?",
+        "options": [
+            {
+                "text": "Charles Lindbergh",
+                "value": 1
+            },
+            {
+                "text": "Amelia Earhart",
+                "value": 0
+            },
+            {
+                "text": "Sarah Connor",
+                "value": 0
+            },
+            {
+                "text": "Orville Wright",
+                "value": 0
+            }
+        ]
+    },
+    {
+        "question": "Kuka oli ensimmäinen nainen avaruudessa?",
+        "options": [
+            {
+                "text": "Amelia Earhart",
+                "value": 0
+            },
+            {
+                "text": "Ellen Ripley",
+                "value": 0
+            },
+            {
+                "text": "Margaret Hamilton",
+                "value": 0
+            },
+            {
+                "text": "Valentina Tereshkova",
+                "value": 1
+            }
+        ]
+    },
+    {
+        "question": "Kuka oli ensimmäinen lentolupakirjan saanut nainen?",
+        "options": [
+            {
+                "text": "Amelia Earhart (1923)",
+                "value": 0
+            },
+            {
+                "text": "Dana Scully (1911)",
+                "value": 0
+            },
+            {
+                "text": "Raymonde de Laroche (1910)",
+                "value": 1
+            },
+            {
+                "text": "Gladys Sandford (1925)",
+                "value": 0
+            }
+        ]
+    },
+    {
+        "question": "Mikä oli ensimmäinen nisäkäs avaruudessa?",
+        "options": [
+            {
+                "text": "Koira, Laika (1957)",
+                "value": 0
+            },
+            {
+                "text": "Apina, Albert II (1949)",
+                "value": 1
+            },
+            {
+                "text": "Hiiri, nimetön (1950)",
+                "value": 0
+            },
+            {
+                "text": "Koira, Tsygan (1951)",
+                "value": 0
+            }
+        ]
+    }
+]
