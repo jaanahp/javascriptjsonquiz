@@ -96,7 +96,16 @@ Not using external JSON file to store the questions and their answers. Not check
                       tdAnswer.appendChild(label);
                   }
             }
+        }
 
+        function checkAnswers () {
+          //funktio kerää getElementByNamella("option" + i) valitut radiobuttonit
+          //funktio tarkistaa, että jokaisella kysymyksellä on valittu yksi radiobutton
+          //funktio vertaa, onko radiobuttonin value 1 ja jos on, vastaus on oikein
+          //oikein vastattujen kysymysten määrä kerätään muuttujaan ja näytetään käyttäjälle
+
+          event.preventDefault();
+          return false;
         }
 
     </script>
@@ -115,7 +124,7 @@ Not using external JSON file to store the questions and their answers. Not check
   <form>
     <table id="quiztable" class="table table-sm">
     </table>
-    <button class="btn btn-primary" type="submit">Submit</button>
+    <button class="btn btn-primary" type="submit" onclick="checkAnswers()">Submit</button>
   </form>
 </body>
 </html>
