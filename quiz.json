@@ -103,5 +103,26 @@
                 "value": 0
             }
         ]
+    },
+    {
+        "question": "Kuka tai ketkä kehittivät ensimmäisen lentokoneen?",
+        "options": [
+            {
+                "text": "James T. Kirk (1907)",
+                "value": 0
+            },
+            {
+                "text": "Howard Hughes (1905)",
+                "value": 0
+            },
+            {
+                "text": "Wilbur ja Orville Wright (1903)",
+                "value": 1
+            },
+            {
+                "text": "Samuel Langley (1896)",
+                "value": 0
+            }
+        ]
     }
 ]
