@@ -33,7 +33,7 @@ Not using external JSON file to store the questions and their answers. Not check
         let questions = [];
         var options = [];
 
-        function JSONtoArrays() {
+        function JSONdataToArrays() {
             async function getJSONdata(url) {
               let response = await fetch(url);
               let jsonData = await response.json();               
@@ -45,24 +45,23 @@ Not using external JSON file to store the questions and their answers. Not check
             }
           getJSONdata('quiz.json');
         }
-        JSONtoArrays();
+        JSONdataToArrays();
 
         function createQuizTable () {
-            let quizrow = document.getElementById('quizrow'); //row div
+            let quizrow = document.getElementById('quizrow');
             for (let i = 0; i < questions.length; i++) {
-                //ensin luodaan kysymysten vaatima määrä -tr elementtejä
-                  let quizSet = document.createElement('div'); //col-sm-4 tyyppi, tule rown sisään tähän kysymykset ja vastaukset
-                  let question = document.createElement('h6'); //tähän kysymys
+                  let quizSet = document.createElement('div');
+                  let question = document.createElement('h6');
                   quizSet.className = "col-sm-4 quizset";
                   question.innerText = questions[i];
                   quizrow.appendChild(quizSet);
                   quizSet.appendChild(question);
 
                   for (let j = 0; j < options[i].length; j++) {
-                      let answerDiv = document.createElement('div');
+                      let optionSet = document.createElement('div');
                       let input = document.createElement('input');
                       let label = document.createElement('label');
-                      answerDiv.className = 'form-check radio';
+                      optionSet.className = 'form-check radio';
                       input.className = 'form-check-input';
                       input.type = 'radio';
                       input.id = "option" + i + j;
@@ -70,9 +69,9 @@ Not using external JSON file to store the questions and their answers. Not check
                       label.innerText = `${options[i][j].text}`;
                       label.htmlFor = "option" + i + j;
                       label.appendChild(input);
-                      answerDiv.appendChild(label);
+                      optionSet.appendChild(label);
                       input.value = options[i][j].value;
-                      quizSet.appendChild(answerDiv);
+                      quizSet.appendChild(optionSet);
                   }
             }
         }
@@ -81,14 +80,12 @@ Not using external JSON file to store the questions and their answers. Not check
           let selectedAnswers = [];
           let correctAnswers = 0;
           let result = document.getElementById('result');
-          let totalAnswers = 0;
 
           for (let i = 0; i < questions.length; i++) {
             let selected = document.getElementsByName("option" + i);
             for (let j = 0; j < selected.length; j++) {
               if (selected[j].checked) {
                 selectedAnswers.push(selected[j].value);
-                totalAnswers++;
 
                 if (selected[j].value == 1) {
                   correctAnswers++;
